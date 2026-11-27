@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5A608A;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0d5c3e;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #09422c;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #0077DD;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #5A608A;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #FF7722;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #A8B9DC;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #0d5c3e;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="Queensa.png" alt="Logo Muslim.or.id" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">Winsa's Muslim Corner</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.HTML" class="nav-link">Beranda</a></li>
+      
+      <!-- Dropdown Kategori -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">Kategori ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Akidah</a></li>
+          <li><a href="#">Manhaj</a></li>
+          <li><a href="#">Fikih</a></li>
+          <li><a href="#">Akhlak dan Nasihat</a></li>
+          <li><a href="#">Fatwa Ulama</a></li>
+          <li><a href="#">Tazkiyatun Nufus</a></li>
+          <li><a href="#">Khotbah Jum'at</a></li>
+        </ul>
+      </li>
+
+    <li class="nav-item"><a href="keutamaan.html" class="nav-link">keutamaan sholat</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">sifat sholat nabi</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">tata cara sholat</a></li>
+      <li class="nav-item"><a href="12 doa iftitah.html" class="nav-link">12 doa iftitah</a></li>
+	  <li class="nav-item"><a href="Dzikir setelah sholat.HTML" class="nav-link">Dzikir setelah sholat</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>12 doa iftitah</h1>
+   <center><img src="sholat.png" width="500" height="300"></center>
+    <h2>pertama<h2>
+	<p class="penjelasan-justify">
+   اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ، كَمَا بَاعَدْتَ بَيْنَ المَشْرِقِ وَالمَغْرِبِ، اللَّهُمَّ نَقِّنِي مِنَ الخَطَايَا كَمَا يُنَقَّى الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ، اللَّهُمَّ اغْسِلْ خَطَايَايَ بِالْمَاءِ وَالثَّلْجِ وَالبَرَدِ
+
+“Ya Allah, jauhkanlah antara aku dan kesalahanku sebagaimana Engkau telah menjauhkan antara timur dan barat. Ya Allah, sucikanlah kesalahanku sebagaimana pakaian yang putih disucikan dari kotoran. Ya Allah, cucilah kesalahanku dengan air, salju, dan air dingin” (HR.Bukhari 2/182, Muslim 2/98)
+
+Doa ini biasa dibaca Rasulullah Shallallahu’alaihi Wasallam dalam shalat fardhu. Doa ini adalah doa yang paling shahih diantara doa iftitah lainnya, sebagaimana dikatakan oleh Ibnu Hajar dalam Fathul Baari (2/183).<p>
+    <h2>kedua</h2>
+	<p class="penjelasan-justify">
+   وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا، وَمَا أَنَا مِنَ الْمُشْرِكِينَ، إِنَّ صَلَاتِي، وَنُسُكِي، وَمَحْيَايَ، وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ، لَا شَرِيكَ لَهُ، وَبِذَلِكَ أُمِرْتُ وَأَنَا مِنَ الْمُسْلِمِينَ، اللهُمَّ أَنْتَ الْمَلِكُ لَا إِلَهَ إِلَّا أَنْتَ أَنْتَ رَبِّي، وَأَنَا عَبْدُكَ، ظَلَمْتُ نَفْسِي، وَاعْتَرَفْتُ بِذَنْبِي، فَاغْفِرْ لِي ذُنُوبِي جَمِيعًا، إِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ، وَاهْدِنِي لِأَحْسَنِ الْأَخْلَاقِ لَا يَهْدِي لِأَحْسَنِهَا إِلَّا أَنْتَ، وَاصْرِفْ عَنِّي سَيِّئَهَا لَا يَصْرِفُ عَنِّي سَيِّئَهَا إِلَّا أَنْتَ، لَبَّيْكَ وَسَعْدَيْكَ وَالْخَيْرُ كُلُّهُ فِي يَدَيْكَ، وَالشَّرُّ لَيْسَ إِلَيْكَ، أَنَا بِكَ وَإِلَيْكَ، تَبَارَكْتَ وَتَعَالَيْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ
+
+“Aku hadapkan wajahku kepada Dzat yang Maha Pencipta langit dan bumi sebagai muslim yang ikhlas dan aku bukan termasuk orang yang musyrik. Sesungguhnya shalatku, sembelihanku, hidupku dan matiku, hanya semata-mata untuk Allah Rabb semesta alam. Tidak ada sekutu bagiNya. Oleh karena itu aku patuh kepada perintahNya, dan aku termasuk orang yang aku berserah diri. Ya Allah, Engkaulah Maha Penguasa. Tidak ada Ilah yang berhak disembah selain Engkau. Mahasuci Engkau dan Maha Terpuji. Engkaulah Tuhanku dan aku adalah hambaMu. Aku telah menzhalimi diriku sendiri dan akui dosa-dosaku. Karena itu ampunilah dosa-dosaku semuanya. Sesungguhnya tidak ada yang bisa mengampuni segala dosa melainkan Engkau. Tunjukilah aku akhlak yang paling terbaik. Tidak ada yang dapat menunjukkannya melainkan hanya Engkau. Jauhkanlah akhlak yang buruk dariku, karena sesungguhnya tidak ada yang sanggup menjauhkannya melainkan hanya Engkau. Aka aku patuhi segala perintah-Mu, dan akan aku tolong agama-Mu. Segala kebaikan berada di tangan-Mu. Sedangkan keburukan tidak datang dari Mu. Orang yang tidak tersesat hanyalah orang yang Engkau beri petunjuk. Aku berpegang teguh dengan-Mu dan kepada-Mu. Tidak ada keberhasilan dan jalan keluar kecuali dari Mu. Maha Suci Engkau dan Maha Tinggi. Kumohon ampunan dariMu dan aku bertobat kepadaMu” (HR. Muslim 2/185 – 186)
+
+Doa ini biasa dibaca Rasulullah Shallallahu’alaihi Wasallam dalam shalat fardhu dan shalat sunnah.<p>
+<h2>ketiga</h2>
+<p class="penjelasan-justify">
+اللَّهِ أَكْبَرُ وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَوَاتِ وَالْأَرْضَ حَنِيفًا مُسْلِمًا وَمَا أَنَا مِنَ الْمُشْرِكِينَ، إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ لَا شَرِيكَ لَهُ وَبِذَلِكَ أُمِرْتُ وَأَنَا أَوَّلُ الْمُسْلِمِينَ، اللَّهُمَّ أَنْتَ الْمَلِكُ لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ وَبِحَمْدِكَ
+
+“Aku hadapkan wajahku kepada Dzat yang Maha Pencipta langit dan bumi sebagai muslim yang ikhlas dan aku bukan termasuk orang yang musyrik. Sesungguhnya shalatku, sembelihanku, hidupku dan matiku, hanya semata-mata untuk Allah Rabb semesta alam. Tidak ada sekutu bagi-Nya. Oleh karena itu aku patuh kepada perintahNya, dan aku termasuk orang yang aku berserah diri. Ya Allah, Engkaulah Maha Penguasa. Tidak ada Ilah yang berhak disembah selain Engkau. Mahasuci Engkau dan Maha Terpuji”. (HR. An Nasa-i, 1/143. Di shahihkan Al Albani dalam Sifatu Shalatin Nabi 1/251)<p>
+<h2>keempat</h2>
+<p class="penjelasan-justify">
+إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ لَا شَرِيكَ لَهُ، وَبِذَلِكَ أُمِرْتُ وَأَنَا مِنَ الْمُسْلِمِينَ. اللَّهُمَّ اهْدِنِي لِأَحْسَنِ الْأَعْمَالِ وَأَحْسَنِ الْأَخْلَاقِ لَا يَهْدِي لِأَحْسَنِهَا إِلَّا أَنْتَ، وَقِنِي سَيِّئَ الْأَعْمَالِ وَسَيِّئَ الْأَخْلَاقِ لَا يَقِي سَيِّئَهَا إِلَّا أَنْتَ
+
+“Sesungguhnya shalatku, sembelihanku, hidupku dan matiku, hanya semata-mata untuk Allah Rabb semesta alam. Tidak ada sekutu bagi-Nya. Oleh karena itu aku patuh kepada perintahNya, dan aku termasuk orang yang aku berserah diri. Ya Allah, tunjukilah aku amal dan akhlak yang terbaik. Tidak ada yang dapat menujukkanku kepadanya kecuali Engkau. Jauhkanlah aku dari amal dan akhlak yang buruk. Tidak ada yang dapat menjauhkanku darinya kecuali Engkau”. (HR. An Nasa-i 1/141, Ad Daruquthni 112)<p>
+<h2>kelima</h2>
+<p class="penjelasan-justify">
+سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ تَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ
+
+“Maha suci Engkau, ya Allah. Ku sucikan nama-Mu dengan memuji-Mu. Nama-Mu penuh berkah. Maha tinggi Engkau. Tidak ilah yang berhak disembah selain Engkau” (HR.Abu Daud 1/124, An Nasa-i, 1/143, At Tirmidzi 2/9-10, Ad Darimi 1/282, Ibnu Maajah 1/268. Dari sahabat Abu Sa’id Al Khudri, dihasankan oleh Al Albani dalam Sifatu Shalatin Nabi 1/252)
+
+Doa ini juga diriwayatkan dari sahabat lain secara marfu’, yaitu dari ‘Aisyah, Anas bin Malik dan Jabir  Radhiallahu’anhum. Bahkan Imam Muslim membawakan riwayat :
+
+أن عمر بن الخطاب كان يجهر بهؤلاء الكلمات يقول : سبحانك اللهم وبحمدك . تبارك اسمك وتعالى جدك . ولا إله غيرك
+
+“Umar bin Khattab pernah menjahrkan doa ini (ketika shalat) : (lalu menyebut doa di atas)” (HR. Muslim no.399)
+
+Demikianlah, doa ini banyak diamalkan oleh para sahabat Nabi, sehingga para ulama pun banyak yang lebih menyukai untuk mengamalkan doa ini dalam shalat. Selain itu doa ini cukup singkat dan sangat tepat bagi imam yang mengimami banyak orang yang kondisinya lemah, semisal anak-anak dan orang tua.<p>
+<h2>keenam</h2>
+<p class="penjelasan-justify">
+3x  لَا إِلَهَ إِلَّا اللَّهُ
+
+3x  اللَّهُ أَكْبَرُ كَبِيرًا
+
+“Maha suci Engkau, ya Allah. Ku sucikan nama-Mu dengan memuji-Mu. Nama-Mu penuh berkah. Maha tinggi Engkau. Tidak ilah yang berhak disembah selain Engkau, Tiada Tuhan yang berhak disembah selain Allah (3x), Allah Maha Besar (3x)” (HR.Abu Daud 1/124, dihasankan oleh Al Albani dalam Sifatu Shalatin Nabi 1/252)p>
+<h2>ketujuh</h2>
+<p> 
+اللهُ أَكْبَرُ كَبِيرًا، وَالْحَمْدُ لِلَّهِ كَثِيرًا، وَسُبْحَانَ اللهِ بُكْرَةً وَأَصِيلًا
+
+“Allah Maha Besar dengan segala kebesaran, segala puji bagi Allah dengan pujian yang banyak, Maha Suci Allah, baik waktu pagi dan petang” (HR. Muslim 2/99)
+
+Hadits tersebut diriwayatkan oleh Ibnu Umar Radhiallahu’anhu, ia berkata:
+
+بينما نحن نصلي مع رسول الله صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ؛ إذ قال رجل من القوم: … فذكره. فقال رسول الله صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ: ” عجبت لها! فتحت لها أبواب السماء “. قال ابن عمر: فما تركتهن منذ سمعت رسول الله صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يقول ذلك
+
+“Ketika kami shalat bersama Rasulullah Shallallahu’alaihi Wasallam, ada seorang lelaki yang berdoa iiftitah: (lalu disebutkan doa di atas). Rasulullah Shallallahu’alaihi Wasallam lalu bersabda: ‘Aku heran, dibukakan baginya pintu-pintu langit‘. Ibnu Umar pun berkata:’Aku tidak pernah meninggalkan doa ini sejak beliau berkata demikian’”.p>
+<h2>kedelapan</h2>
+<p class="penjelasan-justify">
+الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ
+
+“Segala puji bagi Allah dengan pujian yang banyak, pujian yang terbaik dan pujian yang penuh keberkahan di dalamnya” (HR. Muslim 2/99).
+
+Hadits tersebut diriwayatkan oleh Anas bin Malik Radhiallahu’anhu, ketika ada seorang lelaki yang membaca doa iftitah tersebut, Rasulullah Shallallahu’alaihi Wasallam bersabda:
+
+لقد رأيت اثني عشر ملكاً يبتدرونها ؛ أيهم يرفعها
+
+“Aku melihat dua belas malaikat bersegera menuju kepadanya. Mereka saling berlomba untuk mengangkat doa itu (kepada Allah Ta’ala)”p>
+<h2>kesembilan</h2>
+<p class="penjelasan-justify">
+اللَّهُمَّ لَكَ الحَمْدُ أَنْتَ قَيِّمُ السَّمَوَاتِ وَالأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الحَمْدُ لَكَ مُلْكُ السَّمَوَاتِ وَالأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الحَمْدُ أَنْتَ نُورُ السَّمَوَاتِ وَالأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الحَمْدُ أَنْتَ مَلِكُ السَّمَوَاتِ وَالأَرْضِ، وَلَكَ الحَمْدُ أَنْتَ الحَقُّ وَوَعْدُكَ الحَقُّ، وَلِقَاؤُكَ حَقٌّ، وَقَوْلُكَ حَقٌّ، وَالجَنَّةُ حَقٌّ، وَالنَّارُ حَقٌّ، وَالنَّبِيُّونَ حَقٌّ، وَمُحَمَّدٌ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ حَقٌّ، وَالسَّاعَةُ حَقٌّ، اللَّهُمَّ لَكَ أَسْلَمْتُ، وَبِكَ آمَنْتُ، وَعَلَيْكَ تَوَكَّلْتُ، وَإِلَيْكَ أَنَبْتُ، وَبِكَ خَاصَمْتُ، وَإِلَيْكَ حَاكَمْتُ، فَاغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ، وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ، أَنْتَ المُقَدِّمُ، وَأَنْتَ المُؤَخِّرُ، لاَ إِلَهَ إِلَّا أَنْتَ
+
+“Ya Allah, segala puji bagi Engkau. Engkau pemelihara langit dan bumi serta orang-orang yang berada di dalamnya. Segala puji bagi Engkau. Engkau memiliki kerajaan langit, bumi dan siapa saja yang berada di dalamnya. Segala puji bagi Engkau. Engkau adalah cahaya bagi langit, bumi dan siapa saja yang berada di dalamnya. Segala puji bagi Engkau. Engkau Raja langit dan bumi dan Raja bagi siapa saja yang berada di dalamnya. Segala puji bagi Engkau. Engkaulah Al Haq. Janji-Mu pasti benar, firman-Mu pasti benar, pertemuan dengan-Mu pasti benar, firman-Mu pasti benar, surga itu benar adanya, neraka itu benar adanya, para nabi itu membawa kebenaran, dan Muhammad Shallallahu’alaihi Wasallam itu membawa kebenaran, hari kiamat itu benar adanya. Ya Allah, kepada-Mu lah aku berserah diri.Kepada-Mu lah aku beriman. Kepada-Mu lah aku bertawakal. Kepada-Mu lah aku bertaubat. Kepada-Mu lah aku mengadu. Dan kepada-Mu aku berhukum. Maka ampunilah dosa-dosaku. Baik yang telah aku lakukan maupun yang belum aku lakukan. Baik apa yang aku sembunyikan maupun yang aku nyatakan. Engkaulah Al Muqaddim dan Al Muakhir. Tiada Tuhan yang berhak disembah selain Engkau” (HR. Bukhari 2/3, 2/4, 11/99, 13/366 – 367, 13/399, Muslim 2/184)
+
+Doa iftitah ini sering dibaca Rasulullah Shalallahu’alaihi Wasallam ketika shalat malam. Namun tetap masyru’ juga dibaca pada shalat wajib dan shalat yang lain.p>
+<h2>kesepuluh</h2>
+<p class="penjelasan-justify">
+اللهُمَّ رَبَّ جَبْرَائِيلَ، وَمِيكَائِيلَ، وَإِسْرَافِيلَ، فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ، عَالِمَ الْغَيْبِ وَالشَّهَادَةِ، أَنْتَ تَحْكُمُ بَيْنَ عِبَادِكَ فِيمَا كَانُوا فِيهِ يَخْتَلِفُونَ، اهْدِنِي لِمَا اخْتُلِفَ فِيهِ مِنَ الْحَقِّ بِإِذْنِكَ، إِنَّكَ تَهْدِي مَنْ تَشَاءُ إِلَى صِرَاطٍ مُسْتَقِيمٍ
+
+“Ya Allah, Rabb-nya malaikat Jibril, Mikail, dan Israfil. Pencipta langit dan bumi. Yang mengetahui hal ghaib dan juga nyata. Engkaulah hakim di antara hamba-hamba-Mu dalam hal-hal yang mereka perselisihkan. Tunjukkanlah aku kebenaran dalam apa yang diperselisihkan, dengan izin-Mu. Sesungguhnya Engkau memberi petunjuk menuju jalan yang lurus, kepada siapa saja yang Engkau kehendaki” (HR. Muslim 2/185)
+
+Doa iftitah ini juga sering dibaca Rasulullah Shalallahu’alaihi Wasallam ketika shalat malam. Namun tetap masyru’ juga dibaca pada shalat wajib dan shalat yang lain.p>
+
+<h2>kesebelas</h2>
+<p class="penjelan-justify">
+10x الحمد لله
+
+10x لا اله الا الله
+
+10x استغفر الله
+
+10x اللهُمَّ اغْفِرْ لِي ،وَاهْدِنِي، وَارْزُقْنِي وَعَافِنِي
+
+10x اللهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الضِّيقِ يَوْمَ الْحِسَابِ
+
+“Allah Maha Besar” 10x
+
+“Segala pujian bagi Allah” 10x
+
+“Tiada Tuhan yang berhak disembah kecuali Allah” 10x
+
+“Aku memohon ampun kepada Allah” 10x
+
+“Ya Allah, ampunilah aku, berilah aku petunjuk, berilah aku rizki, dan berilah aku kesehatan” 10x
+
+“Ya Allah, aku berlindung dari kesempitan di hari kiamat” 10x
+
+(HR. Ahmad 6/143, Ath Thabrani dalam Al Ausath 62/2. Dihasankan Al Albani dalam Sifatu Shalatin Nabi 1/267)</p>
+
+<h2>keduabelas</h2>
+<p>
+10x الحمد لله
+
+10x لا اله الا الله
+
+10x استغفر الله
+
+10x اللهُمَّ اغْفِرْ لِي ،وَاهْدِنِي، وَارْزُقْنِي وَعَافِنِي
+
+10x اللهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الضِّيقِ يَوْمَ الْحِسَابِ
+
+“Allah Maha Besar” 10x
+
+“Segala pujian bagi Allah” 10x
+
+“Tiada Tuhan yang berhak disembah kecuali Allah” 10x
+
+“Aku memohon ampun kepada Allah” 10x
+
+“Ya Allah, ampunilah aku, berilah aku petunjuk, berilah aku rizki, dan berilah aku kesehatan” 10x
+
+“Ya Allah, aku berlindung dari kesempitan di hari kiamat” 10x
+
+(HR. Ahmad 6/143, Ath Thabrani dalam Al Ausath 62/2. Dihasankan Al Albani dalam Sifatu Shalatin Nabi 1/267)<p>
+  </main>
+
+</body>
+</html>
